@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>채용포스터 제작기</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px;
+      background: #f2f4f7;
+      font-family: Arial, "Malgun Gothic", sans-serif;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin-bottom: 24px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 30px;
+    }
+
+    .form-box,
+    .poster {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccd2d9;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 13px;
+      border: 0;
+      border-radius: 6px;
+      background: #1d4ed8;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .poster {
+      min-height: 700px;
+      border-top: 10px solid #1d4ed8;
+    }
+
+    .poster h2 {
+      margin-top: 0;
+      font-size: 32px;
+      color: #1d4ed8;
+    }
+
+    .poster h3 {
+      font-size: 26px;
+      border-bottom: 2px solid #222;
+      padding-bottom: 12px;
+    }
+
+    .info {
+      margin-top: 24px;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+
+    @media (max-width: 800px) {
+      body {
+        padding: 15px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>채용포스터 제작기</h1>
+
+    <div class="layout">
+      <section class="form-box">
+        <label for="title">채용 제목</label>
+        <input id="title" value="추천채용">
+
+        <label for="company">기업명</label>
+        <input id="company" placeholder="기업명을 입력하세요">
+
+        <label for="position">채용 직무</label>
+        <input id="position" placeholder="채용 직무를 입력하세요">
+
+        <label for="salary">급여</label>
+        <input id="salary" placeholder="연봉 또는 월급">
+
+        <label for="location">근무지</label>
+        <input id="location" placeholder="근무지를 입력하세요">
+
+        <label for="qualification">지원 자격</label>
+        <textarea id="qualification" placeholder="지원 자격을 입력하세요"></textarea>
+
+        <label for="deadline">접수 마감일</label>
+        <input id="deadline" placeholder="예: 2026년 10월 31일">
+
+        <button onclick="updatePoster()">포스터 미리보기</button>
+      </section>
+
+      <section class="poster">
+        <h2 id="posterTitle">추천채용</h2>
+        <h3 id="posterCompany">기업명을 입력하세요</h3>
+
+        <div class="info">
+          <strong>채용 직무</strong>
+          <p id="posterPosition">-</p>
+
+          <strong>급여</strong>
+          <p id="posterSalary">-</p>
+
+          <strong>근무지</strong>
+          <p id="posterLocation">-</p>
+
+          <strong>지원 자격</strong>
+          <p id="posterQualification">-</p>
+
+          <strong>접수 마감일</strong>
+          <p id="posterDeadline">-</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function updatePoster() {
+      document.getElementById("posterTitle").textContent =
+        document.getElementById("title").value || "추천채용";
+
+      document.getElementById("posterCompany").textContent =
+        document.getElementById("company").value || "기업명을 입력하세요";
+
+      document.getElementById("posterPosition").textContent =
+        document.getElementById("position").value || "-";
+
+      document.getElementById("posterSalary").textContent =
+        document.getElementById("salary").value || "-";
+
+      document.getElementById("posterLocation").textContent =
+        document.getElementById("location").value || "-";
+
+      document.getElementById("posterQualification").textContent =
+        document.getElementById("qualification").value || "-";
+
+      document.getElementById("posterDeadline").textContent =
+        document.getElementById("deadline").value || "-";
+    }
+  </script>
+</body>
+</html>
